@@ -55,15 +55,22 @@ sudo dnf install -y pychess --refresh
 
 ## More about&nbsp;.&nbsp;.&nbsp;.
 
-* [PyChess](https://pychess.github.io/) — <https://pychess.github.io/>
-* [Stockfish](https://stockfishchess.org/) — currently, the top chess engine on the planet, and it is open-source
-  My build of the Stockfish chess engine (install this version): <https://github.com/taw00/stockfish-rpm>
+* [PyChess](https://pychess.github.io/) — the PyChess home website: <https://pychess.github.io/>  
+  `sudo dnf copr enable taw/pychess`  
+  `sudo dnf install pychess --refresh -y`
+* [Stockfish](https://stockfishchess.org/) — currently, the top chess engine on
+  the planet, and it is open-source.  My build of the Stockfish chess engine
+  (install this version): <https://github.com/taw00/stockfish-rpm>  
+  `sudo dnf copr enable taw/stockfish`  
+  `sudo dnf install stockfish --refresh -y`
 * [Gnome Chess](https://wiki.gnome.org/Apps/Chess) — another great open-source
   chess frontend. It has a particularly clean and simple interface, but is a
-  bit less versatile as compared to PyChess.
+  bit less versatile as compared to PyChess.  
+  `sudo dnf install gnome-chess --refresh -y`
 * [GNU Chess](https://www.gnu.org/software/chess/) — a common chess engine that
   often is installed on Linux systems. It's not anywhere close to being as
-  strong as Stockfish, but it's still stronger than you are at chess.
+  strong as Stockfish, but it's still stronger than you are at chess.  
+  `sudo dnf install gnuchess --refresh -y`
 * [LiChess.org](https://lichess.org/) — open-source and modern online chess.
   This is, IMHO, the best chess server out there. It's web interface is
   spectacular. It does not plug into the various desktop clients though (to avoid
