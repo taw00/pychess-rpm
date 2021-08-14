@@ -1,6 +1,6 @@
 # PyChess — an open-source desktop chess application and engine
 
-_.&nbsp;.&nbsp;.&nbsp;packaged for Fedora Linux (CentOS and OpenSUSE builds not currently functional)
+_.&nbsp;.&nbsp;.&nbsp;packaged for Fedora Linux (CentOS and OpenSUSE builds not currently functional)_
 
 **PyChess . . .**  
 PyChess is a featureful desktop chess gaming application designed primarily for
