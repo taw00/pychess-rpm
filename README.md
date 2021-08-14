@@ -3,12 +3,12 @@
 _.&nbsp;.&nbsp;.&nbsp;packaged for Fedora Linux (CentOS and OpenSUSE builds not currently functional)_
 
 **PyChess . . .**  
-PyChess is a featureful desktop chess gaming application designed primarily for
-the GNOME desktop application (Linux/UNIX), but had been ported to most other
-operating systems. With PyChess you can play offline wagainst another human or
-computer (using just about any chess engine installed on your system—[I
-recommend Stockfish](https://github.com/taw00/stockfish-rpm)). PyChess also
-supports playing online players from around the world via the
+PyChess is a full-featured desktop chess gaming application designed primarily
+for the GNOME desktop application (Linux/UNIX) framework. With PyChess you can
+play offline wagainst another human or computer (using just about any chess
+engine installed on your system—[I recommend
+Stockfish](https://github.com/taw00/stockfish-rpm)). PyChess also supports
+playing online players from around the world via the
 [FICS](http://www.freechess.org/) or [ICC](https://www.chessclub.com/) chess
 servers.
 
@@ -22,9 +22,9 @@ build and package this application for various RPM flavors of Linux. The binary
 (installable and runnable) packages are then built via the [Fedora Project's
 COPR build system](https://copr.fedorainfracloud.org/coprs/taw/pychess/).
 
-I store all *my* contributions here needed to enable building and packaging
-PyChess. Upstream code—for example, `pychess-1.0.3.tar.gz`—will not be
-redundantly stored here. Those can be found ...
+I store all *my* contributions needed to enable building and packaging PyChess
+in this repository. Upstream code—for example, `pychess-1.0.3.tar.gz`—will not
+be redundantly stored here. Those can be found ...
 [upstream](https://github.com/pychess/pychess). If you know your way around
 building RPMs, you will know how to work with the specfile and other
 contributions found here.
