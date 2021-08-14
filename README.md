@@ -85,9 +85,9 @@ sudo dnf install -y pychess --refresh
 ## Disclaimer
 
 PyChess already ships with Fedora and most other Linux distributions, but those
-vendor-supplied versions are usually woefully outdated (Fedora ships a version
-of PyChess from 2016!).  Therefore, I offer this build for your own
-convenience. I make no guarantees it works as it should. Buyer beware. :) I am
+vendor-supplied versions are usually woefully out of date (Fedora ships a version
+of PyChess from 2016!, for example). Therefore, I offer this build for your own
+convenience. I make no guarantee that it works as it should. Buyer beware. :) I am
 in no way affiliated with the developers of PyChess, but I do thank them and
 the larger PyChess community who have created an incredible chess application.
 
