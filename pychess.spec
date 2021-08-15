@@ -1,9 +1,11 @@
+%define istestbuild 0
+
 Name: pychess
 Summary: Chess client
 License: GPL3
 URL: https://pychess.github.io
+%define original_vendor "Thomas Dybdahl Ahle <pychess-people@googlegroups.com>"
 %define appid io.github.pychess.pychess
-%define istestbuild 1
 
 # Version: major-minor
 %define vermajor 1.0
@@ -13,19 +15,19 @@ Version: %{vermajor}.%{verminor}
 # Release: pkgrel[.extraver][.snapinfo].DIST[.minorbump]
 %define _pkgrel 1
 %if %{istestbuild}
-  %define _pkgrel 0.1
+  %define _pkgrel 0.2
 %endif
 %define minorbump .taw
 BuildArch: noarch
 %if ! %{istestbuild}
-Release:         1%{?dist}%{minorbump}
+Release:         %{_pkgrel}%{?dist}%{minorbump}
 %else
-Release:         0.1.testing%{?dist}%{minorbump}
+Release:         %{_pkgrel}.testing%{?dist}%{minorbump}
 %endif
 
 Source0: https://github.com/pychess/pychess/archive/%{version}/%{name}-%{version}.tar.gz
-Group: Applications/Games
-%define original_vendor "Thomas Dybdahl Ahle <pychess-people@googlegroups.com>"
+
+AutoReqProv: no
 BuildRequires: python3-devel librsvg2
 BuildRequires: desktop-file-utils gettext
 BuildRequires: python-sqlalchemy python-pexpect python-psutil python-websockets python-gobject python-cairo python-gstreamer1 gobject-introspection glib2 gtk3 pango gdk-pixbuf2 gtksourceview3
@@ -77,9 +79,6 @@ PyChess has many other features including:
 %install
 /usr/bin/python3 setup.py install -O1 --root=%{buildroot} --record=INSTALLED_FILES
 
-%clean
-rm -rf %{buildroot}
-
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
 
@@ -93,9 +92,18 @@ rm -rf %{buildroot}
 #                                           [OK]
 
 %changelog
+* Sun Aug 15 2021 Todd Warner <t0dd@protonmail.com> 1.0.3-1.taw
+* Sun Aug 15 2021 Todd Warner <t0dd@protonmail.com> 1.0.3-0.2.testing.taw
+  - The specfile Group tag is no longer used. You define that kind of stuff in the pychess.desktop file.
+  - The specfile clean section is no longer used.
+  - fixed the Release string building logic
+  - Not pulling in the python-websockets Requires for some reason. I blame AutoReqProv  
+    read: https://docs.fedoraproject.org/en-US/packaging-guidelines/AutoProvidesAndRequiresFiltering/  
+    read: https://stackoverflow.com/questions/16598201/disable-rpmbuild-automatic-requirement-finding
+
 * Fri Aug 13 2021 Todd Warner <t0dd@protonmail.com> 1.0.3-0.1.testing.taw
-- https://github.com/pychess/pychess/releases/tag/1.0.3
-- Doesn't completely cleanly. Some error when building the opening book (eco?) database (I think).  
-  Several of these in the build: "Unable to init server: Could not connect: Connection refused"  
-  What server? I don't know.
+  - https://github.com/pychess/pychess/releases/tag/1.0.3
+  - Doesn't completely cleanly. Some error when building the opening book (eco?) database (I think).  
+    Several of these in the build: "Unable to init server: Could not connect: Connection refused"  
+    What server? I don't know.
 
