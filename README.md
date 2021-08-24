@@ -56,6 +56,7 @@ sudo dnf install -y pychess --refresh
 ## More about&nbsp;.&nbsp;.&nbsp;.
 
 * [PyChess](https://pychess.github.io/) — the PyChess home website: <https://pychess.github.io/>  
+  To install my build:  
   `sudo dnf copr enable taw/pychess`  
   `sudo dnf install pychess --refresh -y`
 * [Stockfish](https://stockfishchess.org/) — currently, the top chess engine on
@@ -90,6 +91,10 @@ of PyChess from 2016!, for example). Therefore, I offer this build for your own
 convenience. I make no guarantee that it works as it should. Buyer beware. :) I am
 in no way affiliated with the developers of PyChess, but I do thank them and
 the larger PyChess community who have created an incredible chess application.
+
+The upstream project makes an RPM available, but (a) it isn't available in a
+convenient repository, and (b) it doesn't build in a sanitized build environment (ala
+COPR). My binary RPM build exists for these reasons.
 
 ## Questions or comments&nbsp;.&nbsp;.&nbsp;.
 

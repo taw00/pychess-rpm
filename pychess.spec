@@ -4,7 +4,6 @@ Name: pychess
 Summary: Chess client
 License: GPL3
 URL: https://pychess.github.io
-%define original_vendor "Thomas Dybdahl Ahle <pychess-people@googlegroups.com>"
 %define appid io.github.pychess.pychess
 
 # Version: major-minor
@@ -82,8 +81,13 @@ PyChess has many other features including:
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
 
+# Credit, original developer: Thomas Dybdahl Ahle <pychess-people@googlegroups.com>
+# https://www.chessprogramming.org/Thomas_Dybdahl_Ahle
+# The upstream project's RPM build sets the deprecated Vendor. RPM no longer
+# uses that value, therefore it was removed. Credit, though, where credit is due.
 
-# TODO - resolve this dialog that pops up when you run the program for the first time ...
+# TODO
+# Resolve this dialog that pops up when you run the program for the first time:
 # Some PyChess features require further permission in order to download external components
 # [] database querying needs scoutfish https://github.com/pychess/scoutfish
 # [] database opening tree needs chess_db https://github.com/pychess/chess_db
