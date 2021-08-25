@@ -17,7 +17,7 @@ is the best overall chess client for the Linux desktop.
 
 ## tl;dr — I just want to play chess!
 
-*I could only make RPMs available for Fedora. CentOS, EL8, and OpenSUSE all have missing dependencies.*
+*NOTE: RPMs are only available for Fedora. CentOS, EL8, and OpenSUSE all have missing dependencies.*
 
 **Prep&nbsp;.&nbsp;.&nbsp;.**
 ```bash
