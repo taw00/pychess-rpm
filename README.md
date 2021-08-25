@@ -4,8 +4,8 @@ _.&nbsp;.&nbsp;.&nbsp;packaged for Fedora Linux (CentOS and OpenSUSE builds not 
 
 **PyChess . . .**  
 PyChess is a full-featured desktop chess gaming application designed primarily
-for the GNOME desktop application (Linux/UNIX) framework. With PyChess you can
-play offline wagainst another human or computer (using just about any chess
+for the GNOME desktop application framework (Linux/UNIX). With PyChess you can
+play offline against another human or computer (using just about any chess
 engine installed on your system—[I recommend
 Stockfish](https://github.com/taw00/stockfish-rpm)). PyChess also supports
 playing online players from around the world via the
@@ -15,25 +15,9 @@ servers.
 PyChess aims to be a clean, well-designed, interface, and I personally think it
 is the best overall chess client for the Linux desktop.
 
-_**What is this GitHub Repository?**_
+## tl;dr — I just want to play chess!
 
-The purpose of this repository is to store all the bits and pieces needed to
-build and package this application for various RPM flavors of Linux. The binary
-(installable and runnable) packages are then built via the [Fedora Project's
-COPR build system](https://copr.fedorainfracloud.org/coprs/taw/pychess/).
-
-I store all *my* contributions needed to enable building and packaging PyChess
-in this repository. Upstream code—for example, `pychess-1.0.3.tar.gz`—will not
-be redundantly stored here. Those can be found ...
-[upstream](https://github.com/pychess/pychess). If you know your way around
-building RPMs, you will know how to work with the specfile and other
-contributions found here.
-
-## tl;dr&nbsp;.&nbsp;.&nbsp;.
-
-### I just want to play chess!
-
-#### [Fedora only for now]
+*I could only make RPMs available for Fedora. CentOS, EL8, and OpenSUSE all have missing dependencies.*
 
 **Prep&nbsp;.&nbsp;.&nbsp;.**
 ```bash
@@ -46,12 +30,26 @@ sudo dnf copr enable taw/pychess
 sudo dnf install -y pychess --refresh
 ```
 
-### I installed it, now I want to play a game!
+**OK. I installed it. Now I want to play a game!**
 
 1. Browse your software menus
 2. Applications --> Games
 3. Choose PyChess
 4. Play chess!
+
+## What is this GitHub Repository?
+
+The purpose of this repository is to store all the bits and pieces needed to
+build and package this application for various RPM flavors of Linux. The binary
+(installable and runnable) packages are then built via the [Fedora Project's
+COPR build system](https://copr.fedorainfracloud.org/coprs/taw/pychess/).
+
+I store all *my* contributions needed to enable building and packaging PyChess
+in this repository. Upstream code—for example, `pychess-1.0.3.tar.gz`—will not
+be redundantly stored here. Those can be found ...
+[upstream](https://github.com/pychess/pychess). If you know your way around
+building RPMs, you will know how to work with the specfile and other
+contributions found here.
 
 ## More about&nbsp;.&nbsp;.&nbsp;.
 
