@@ -6,15 +6,17 @@ License: GPL3
 URL: https://pychess.github.io
 %define appid io.github.pychess.pychess
 
+
 # Version: major-minor
 %define vermajor 1.0
 %define verminor 3
 Version: %{vermajor}.%{verminor}
 
+
 # Release: pkgrel[.extraver][.snapinfo].DIST[.minorbump]
-%define _pkgrel 1
+%define _pkgrel 2
 %if %{istestbuild}
-  %define _pkgrel 0.2
+  %define _pkgrel 1.2
 %endif
 %define minorbump .taw
 BuildArch: noarch
@@ -24,14 +26,47 @@ Release:         %{_pkgrel}%{?dist}%{minorbump}
 Release:         %{_pkgrel}.testing%{?dist}%{minorbump}
 %endif
 
+
 Source0: https://github.com/pychess/pychess/archive/%{version}/%{name}-%{version}.tar.gz
 
+
 AutoReqProv: no
-BuildRequires: python3-devel librsvg2
-BuildRequires: desktop-file-utils gettext
-BuildRequires: python-sqlalchemy python-pexpect python-psutil python-websockets python-gobject python-cairo python-gstreamer1 gobject-introspection glib2 gtk3 pango gdk-pixbuf2 gtksourceview3
-Requires: python-sqlalchemy python-pexpect python-psutil python-websockets python-gobject python-cairo python-gstreamer1 gobject-introspection glib2 gtk3 pango gdk-pixbuf2 gtksourceview3 gstreamer1 gstreamer1-plugins-base 
+
+%if 0%{?suse_version:1}
+  %{error: "==== OpenSUSE builds cannot be supported. Missing build requirements and running dependencies: python3-gobject, goject-introspection."}
+  exit 1
+  #BuildRequires: desktop-file-utils appstream-glib
+  #BuildRequires: gtk3 librsvg2 gettext sed
+  #BuildRequires: python3-devel python-gtk
+  #BuildRequires: python3-pexpect python3-SQLAlchemy python3-gobject
+  #Requires: python3-pexpect python3-SQLAlchemy python3-gobject python3-psutil
+  #Requires: python3-websockets python3-cairo
+  #Requires: gobject-introspection glib2 gtk3 pango gdk-pixbuf gtksourceview
+  #Requires: gstreamer gstreamer-plugins-good
+%endif
+
+%if 0%{?rhel:1}
+  %{error: "==== CentOS Stream and EL builds cannot be supported. Missing build requirements and running dependencies: python-gobject (EL8), pyton-pexpect (EL8), python-sqlalchemy (EL8,9)."}
+  exit 1
+%endif
+
+%if 0%{?fedora:1}
+BuildRequires: desktop-file-utils libappstream-glib
+BuildRequires: gtk3 librsvg2 gettext sed
+
+BuildRequires: python3-devel
+BuildRequires: python-pexpect python-sqlalchemy python-gobject
+
+Requires: python-pexpect python-sqlalchemy python-gobject python-psutil
+Requires: python-websockets python-cairo python-gstreamer1
+Requires: gobject-introspection glib2 gtk3 pango gdk-pixbuf2 gtksourceview3
+Requires: gstreamer1 gstreamer1-plugins-base 
 #Requires: stockfish
+%else
+  %{error: "==== Uknown OS platform. Builds can not be supported."}
+  exit 1
+%endif
+
 
 %description
 PyChess is a chess client for playing and analyzing chess games. It is
@@ -69,17 +104,27 @@ PyChess has many other features including:
 - Translated into 38 languages (languages with +5% strings translated)
 - Easy to use and intuitive look and feel
 
+
 %prep
 %setup -q -n %{name}-%{version}
+
 
 %build
 /usr/bin/python3 setup.py build
 
+
 %install
 /usr/bin/python3 setup.py install -O1 --root=%{buildroot} --record=INSTALLED_FILES
+# patch the metainfo.xml and then validate it
+sed -i -e '{s/<desktop-application>/<component type="desktop-application">/}' %{buildroot}%{_metainfodir}/*.metainfo.xml
+sed -i -e '{s:</desktop-application>:</component>:}' %{buildroot}%{_metainfodir}/*.metainfo.xml
+sed -i -e '{s:<licence>GFDL</licence>:<project_license>GFDL</project_license>\n <metadata_license>GFDL</metadata_license>:}' %{buildroot}%{_metainfodir}/*.metainfo.xml
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.metainfo.xml
+
 
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
+
 
 # Credit, original developer: Thomas Dybdahl Ahle <pychess-people@googlegroups.com>
 # https://www.chessprogramming.org/Thomas_Dybdahl_Ahle
@@ -93,9 +138,16 @@ PyChess has many other features including:
 # [] database opening tree needs chess_db https://github.com/pychess/chess_db
 # [] ICC lag compensation needs timestamp http://download.chessclub.com/timestamp/
 # [] Don't show this dialog on startup.
-#                                           [OK]
+#                              [OK]
+
 
 %changelog
+* Tue Aug 24 2021 Todd Warner <t0dd@protonmail.com> 1.0.3-2.taw
+* Tue Aug 24 2021 Todd Warner <t0dd@protonmail.com> 1.0.3-1.2.testing.taw
+  - BuildRequires cleanup
+  - upstream metainfo.xml doesn't validate. I patch that and validate it
+  - stubbed-out stanzas for potential SUSE and CentOS support
+
 * Sun Aug 15 2021 Todd Warner <t0dd@protonmail.com> 1.0.3-1.taw
 * Sun Aug 15 2021 Todd Warner <t0dd@protonmail.com> 1.0.3-0.2.testing.taw
   - The specfile Group tag is no longer used. You define that kind of stuff in the pychess.desktop file.
