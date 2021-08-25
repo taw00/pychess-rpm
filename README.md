@@ -55,33 +55,38 @@ sudo dnf install -y pychess --refresh
 
 ## More about&nbsp;.&nbsp;.&nbsp;.
 
-* [PyChess](https://pychess.github.io/) — the PyChess home website: <https://pychess.github.io/>  
-  To install my build:  
+* [PyChess](https://pychess.github.io/) — desktop - the PyChess upstream
+  project website for this software. <https://pychess.github.io/>  
+  But to install my build:  
   `sudo dnf copr enable taw/pychess`  
   `sudo dnf install pychess --refresh -y`
-* [Stockfish](https://stockfishchess.org/) — currently, the top chess engine on
-  the planet, and it is open-source.  My build of the Stockfish chess engine
-  (install this version): <https://github.com/taw00/stockfish-rpm>  
-  `sudo dnf copr enable taw/stockfish`  
-  `sudo dnf install stockfish --refresh -y`
-* [Gnome Chess](https://wiki.gnome.org/Apps/Chess) — another great open-source
-  chess frontend. It has a particularly clean and simple interface, but is a
-  bit less versatile as compared to PyChess.  
+* [Stockfish](https://stockfishchess.org/) — engine - currently, the top chess
+  engine on the planet, and it is open-source. My build of the Stockfish chess
+  engine (install this version) can be found here:
+  <https://github.com/taw00/stockfish-rpm>  
+  `sudo dnf copr enable taw/stockfish`  `sudo dnf install stockfish --refresh -y`
+* [Gnome Chess](https://wiki.gnome.org/Apps/Chess) — desktop - another great
+  open-source chess frontend. It has a particularly clean and simple interface,
+  but is a bit less versatile as compared to PyChess.  
   `sudo dnf install gnome-chess --refresh -y`
-* [GNU Chess](https://www.gnu.org/software/chess/) — a common chess engine that
-  often is installed on Linux systems. It's not anywhere close to being as
-  strong as Stockfish, but it's still stronger than you are at chess.  
+* [GNU Chess](https://www.gnu.org/software/chess/) — engine - a common chess
+  engine that often is installed on Linux systems. It's not anywhere close to
+  being as strong as Stockfish, but it's still stronger than you are at chess.  
   `sudo dnf install gnuchess --refresh -y`
-* [LiChess.org](https://lichess.org/) — open-source and modern online chess.
-  This is, IMHO, the best chess server out there. It's web interface is
-  spectacular. It does not plug into the various desktop clients though (to avoid
-  cheaters using chess hinting, etc). Some mobile applications plug in though.
-* [Free Internet Chess Server (FICS)](https://www.freechess.org/) — One of the
-  oldest and most popular chess servers. The web interface is awful and all
-  play is done through an external client. Its default client is a Java Applet
-  though, but since Java Applets are a thing of the past, setting up and
+* [LiChess.org Server](https://lichess.org/) — server - an open-source and
+  modern online chess server.  This is, IMHO, the best chess server out there.
+  It's web interface is spectacular. It does not plug into the various desktop
+  clients though (to avoid cheaters using chess hinting, etc). Some mobile
+  applications plug in though.
+* [Free Internet Chess Server (FICS)](https://www.freechess.org/) — server -
+  one of the oldest and most popular chess servers. The web interface is awful
+  and all play is done through an external client. Its default client is a Java
+  Applet though, but since Java Applets are a thing of the past, setting up and
   managing your account is challenging to say the least. Once your account is set
   up, though, some clients, like PyChess, plug right in.
+* [PyChess Variants Server](https://www.pychess.org) — server - written by the
+  same guy, but not the same software. This is a chess server modeled after
+  LiChess.org, but with focus on all the weird and wacky chess variants out there.
 
 ## Disclaimer
 
